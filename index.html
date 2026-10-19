@@ -1,9 +1,279 @@
 <!DOCTYPE html>
-<html>
+<html lang="fa" dir="rtl">
 <head>
-    <title>سایت من</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ممد خان | توسعه‌دهنده و برنامه‌نویس</title>
+    <style>
+        /* تنظیمات کلی */
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --accent-hover: #0ea5e9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.8;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* منوی بالا */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background-color: rgba(15, 23, 42, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #334155;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+            font-size: 1rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* بخش اصلی (هیرو) */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 100px 20px 50px;
+            background: radial-gradient(circle at top, #1e293b 0%, #0f172a 100%);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 40px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(56, 189, 248, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* بخش خدمات/مهارت‌ها */
+        .services {
+            padding: 80px 5%;
+            background-color: var(--bg-color);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 50px;
+        }
+
+        .section-title span {
+            color: var(--accent);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #334155;
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* فوتر */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background-color: var(--card-bg);
+            border-top: 1px solid #334155;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* تنظیمات موبایل */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            nav ul { display: none; } /* برای سادگی در موبایل منو مخفی شد */
+        }
+    </style>
 </head>
 <body>
-    <h1>سلام! این اولین سایت من در گیت‌هاب است.</h1>
+
+    <!-- هدر -->
+    <header>
+        <div class="logo">💻 ممد خان <span>(Mammad Khan)</span></div>
+        <nav>
+            <ul>
+                <li><a href="#home">خانه</a></li>
+                <li><a href="#services">خدمات</a></li>
+                <li><a href="#contact">تماس</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- بخش معرفی -->
+    <section class="hero" id="home">
+        <h1>سلام، من <span>ممد خان</span> هستم<br>برنامه‌نویس و توسعه‌دهنده وب</h1>
+        <p>اینجا مجموعه شخصی من است. من به ساخت وب‌سایت‌های مدرن، سریع و کاربرپسند علاقه دارم و همیشه در حال یادگیری تکنولوژی‌های جدید هستم.</p>
+        
+        <div class="btn-group">
+            <a href="#services" class="btn btn-primary">مشاهده مهارت‌ها</a>
+            <a href="https://github.com/khanmohammad2305-io" target="_blank" class="btn btn-outline">گیت‌هاب من</a>
+        </div>
+    </section>
+
+    <!-- بخش خدمات / مهارت‌ها -->
+    <section class="services" id="services">
+        <h2 class="section-title">تخصص‌های <span>من</span></h2>
+        
+        <div class="grid">
+            <!-- کارت ۱ -->
+            <div class="card">
+                <div class="card-icon">🌐</div>
+                <h3>توسعه فرانت‌اند</h3>
+                <p>ساخت رابط کاربری زیبا و واکنش‌گرا با استفاده از HTML, CSS, JavaScript و فریم‌ورک‌های مدرن.</p>
+            </div>
+            
+            <!-- کارت ۲ -->
+            <div class="card">
+                <div class="card-icon">⚙️</div>
+                <h3>توسعه بک‌اند</h3>
+                <p>طراحی و پیاده‌سازی منطق سمت سرور، مدیریت دیتابیس و ساخت APIهای امن و سریع.</p>
+            </div>
+            
+            <!-- کارت ۳ -->
+            <div class="card">
+                <div class="card-icon">🛠️</div>
+                <h3>پروژه‌های متن‌باز</h3>
+                <p>مشارکت در پروژه‌های گیت‌هاب و انتشار کدهای آموزشی برای کمک به جامعه برنامه‌نویسان.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- فوتر -->
+    <footer id="contact">
+        <p>© ۲۰۲۶ مجموعه ممد خان. ساخته شده با ❤️ و کد.</p>
+        <p style="margin-top: 10px; font-size: 0.8rem;">آدرس سایت: khanmohammad2305-io.github.io/Test</p>
+    </footer>
+
 </body>
 </html>
